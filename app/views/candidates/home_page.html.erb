@@ -1,17 +1,48 @@
 <div class="container">
-		<h1> Home Page </h1>
-		<h2> Candidates </h2>
-		<% @candidates.each do |candidate| %>
-			<h3> <%= candidate.name %> </h3>
-		<% end %>
+	<h1> Candidate Pulse </h1>
+	<!--
+	<% @candidates.each do |candidate| %>
+		<h3> <%= candidate.name %> </h3>
+	<% end %>
+	-->
 
-		<div class="row">
-		  <div class="col-md-6">
-				<center> Republican </center>
+	<div class="row">
+		<center>
+				<div class="input-group">
+			      	<input type="text" class="form-control" placeholder="Enter a candidate name.">
+			      	<span class="input-group-btn">
+			        	<button class="btn btn-default" type="button">Search</button>
+			      	</span>
+			    </div><!-- /input-group -->
+		</center>
+	</div>
+
+	<div class="row">
+	 	<div class="col-md-4">
+			<center>
+				<h3> Republican </h3> 
 				<% @candidates.each do |candidate| %>
-					<h3> <%= candidate.name %> </h3>
+					<h4> 
+						<%= link_to candidate.name, candidate_path(candidate) %> 
+					</h4>
 				<% end %>
-			</div>
-		  <div class="col-md-6">Democrats</div>
+			</center>
 		</div>
+	  <div class="col-md-4">
+	  	<center>
+				<h3> Democrats </h3> 
+				<% @candidates.each do |candidate| %>
+				<h4> <%= candidate.name %> </h4>
+				<% end %>
+			</center>
+	  </div>
+	 	<div class="col-md-4">
+			<center>
+				<h3> Independent </h3> 
+				<% @candidates.each do |candidate| %>
+				<h4> <%= candidate.name %> </h4>
+				<% end %>
+			</center>
+		</div>
+	</div>
 </div>
