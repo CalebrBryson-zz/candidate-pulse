@@ -20,29 +20,32 @@
 	<div class="row">
 	 	<div class="col-md-4">
 			<center>
-				<h3> Republican </h3> 
-				<% @candidates.each do |candidate| %>
-					<h4> 
-						<%= link_to candidate.name, candidate_path(candidate) %> 
+				<h3> Republican </h3>
+				<% @republicans.each do |candidate| %>
+					<h4>
+						<%= link_to candidate.name, candidate_path(candidate) %>
 					</h4>
 				<% end %>
 			</center>
 		</div>
 	  <div class="col-md-4">
 	  	<center>
-				<h3> Democrats </h3> 
-				<% @candidates.each do |candidate| %>
+				<h3> Democrats </h3>
+				<% @democrats.each do |candidate| %>
 				<h4> <%= candidate.name %> </h4>
 				<% end %>
 			</center>
 	  </div>
 	 	<div class="col-md-4">
 			<center>
-				<h3> Independent </h3> 
-				<% @candidates.each do |candidate| %>
+				<h3> Independent </h3>
+				<% @independents.each do |candidate| %>
 				<h4> <%= candidate.name %> </h4>
 				<% end %>
 			</center>
 		</div>
+	</div>
+	<div class="jumbotron">
+		<%= pie_chart Candidate.group(:party).count %>
 	</div>
 </div>
