@@ -22,7 +22,9 @@
 			<center>
 				<h3> Republican </h3> 
 				<% @candidates.each do |candidate| %>
-				<h4> <%= candidate.name %> </h4>
+					<h4> 
+						<%= link_to candidate.name, candidate_path(candidate) %> 
+					</h4>
 				<% end %>
 			</center>
 		</div>
