@@ -7,4 +7,5 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 #
 
-candidates = Candidate.create([{name: 'Donald Trump'}, {name: 'Hilary Clinton'},{name: 'Ben Carson'},{name: 'Rand Paul'}])
+candidates = Candidate.create([{name: 'Donald Trump'}, {name: 'Hilary Clinton'},
+  {name: 'Ben Carson'},{name: 'Rand Paul'}])

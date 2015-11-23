@@ -11,12 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151123024353) do
+ActiveRecord::Schema.define(version: 20151116205937) do
 
   create_table "authors", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.string   "name"
+    t.integer  "candidate_id"
   end
 
   create_table "candidates", force: :cascade do |t|
@@ -35,11 +36,11 @@ ActiveRecord::Schema.define(version: 20151123024353) do
   create_table "tweets", force: :cascade do |t|
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
-    t.string   "author_name"
     t.string   "htags"
     t.integer  "num_favorites"
     t.integer  "num_retweets"
     t.string   "text"
+    t.integer  "author_id"
   end
 
 end
