@@ -4,4 +4,14 @@
 		<% @candidates.each do |candidate| %>
 			<h3> <%= candidate.name %> </h3>
 		<% end %>
+
+		<div class="row">
+		  <div class="col-md-6">
+				<center> Republican </center>
+				<% @candidates.each do |candidate| %>
+					<h3> <%= candidate.name %> </h3>
+				<% end %>
+			</div>
+		  <div class="col-md-6">Democrats</div>
+		</div>
 </div>
