@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151116205937) do
+ActiveRecord::Schema.define(version: 20151128075321) do
 
   create_table "authors", force: :cascade do |t|
     t.datetime "created_at",   null: false
@@ -26,6 +26,15 @@ ActiveRecord::Schema.define(version: 20151116205937) do
     t.string   "name"
     t.string   "party"
   end
+
+  create_table "hashtags", force: :cascade do |t|
+    t.integer  "tweet_id"
+    t.string   "htag"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "hashtags", ["tweet_id"], name: "index_hashtags_on_tweet_id"
 
   create_table "issues", force: :cascade do |t|
     t.datetime "created_at", null: false

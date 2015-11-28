@@ -19,7 +19,6 @@ class CreateAuthors < ActiveRecord::Migration
 
     create_table :tweets do |t|
       t.timestamps null: false
-			t.string :htags
 			t.integer :num_favorites
 			t.integer :num_retweets
 			t.string :text
