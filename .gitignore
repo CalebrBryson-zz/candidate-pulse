@@ -17,4 +17,4 @@
 /tmp
 
 .DS_Store
-api_key.txt
+/api_key.txt
