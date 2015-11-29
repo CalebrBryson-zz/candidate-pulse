@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151129005544) do
+ActiveRecord::Schema.define(version: 20151128232253) do
 
   create_table "authors", force: :cascade do |t|
     t.datetime "created_at",   null: false
@@ -45,21 +45,14 @@ ActiveRecord::Schema.define(version: 20151129005544) do
   create_table "keywords", force: :cascade do |t|
     t.integer  "tweet_id"
     t.string   "keyword"
+    t.float    "relevance"
+    t.float    "score"
+    t.string   "sentiment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   add_index "keywords", ["tweet_id"], name: "index_keywords_on_tweet_id"
-
-  create_table "sentiments", force: :cascade do |t|
-    t.integer  "keyword_id"
-    t.float    "relevance"
-    t.float    "score"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "sentiments", ["keyword_id"], name: "index_sentiments_on_keyword_id"
 
   create_table "tweets", force: :cascade do |t|
     t.datetime "created_at",    null: false

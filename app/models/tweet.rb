@@ -39,29 +39,21 @@ class Tweet < ActiveRecord::Base
   end
 
   def store_keywords
-    alchemyapi = AlchemyAPI.new()
-    keywords = alchemyapi.keywords("text", text, options = {"sentiment" => 1})
-    keywords["keywords"].each do |output|
-      #Creates a new Keyword, Assigns the text to variable keyword,
-      #associates the keyword to the tweet in context then savesa
-      #If this keyword already exists, add the new Sentiment
-      if Keyword.where(:keyword => output["text"]).empty?
+    #IF the keywords have not been stored yet
+    if Keyword.where(:tweet_id => self.id).empty?
+      alchemyapi = AlchemyAPI.new()
+      keywords = alchemyapi.keywords("text", text, options = {"sentiment" => 1})
+      keywords["keywords"].each do |output|
+        #Creates a new Keyword, Assigns the text to variable keyword,
+        #associates the keyword to the tweet in context then savesa
         new_keyword = Keyword.new
         new_keyword.keyword = output["text"]
+        new_keyword.relevance = output["relevance"]
+        new_keyword.score = output["sentiment"]["score"]
+        new_keyword.sentiment = output["sentiment"]["type"]
         new_keyword.tweet = self
         new_keyword.save
-      else #find the existing keyword to add sentiment to
-        new_keyword = Keyword.where(:keyword => output["text"])
       end
-
-      #Creates the Sentiment
-      new_sentiment = Sentiment.new
-      #Assigns relevance, score, then associates keyword to our new keyword
-      new_sentiment.relevance = output["relevance"]
-      new_sentiment.score = output["sentiment"]["score"]
-      new_sentiment.keyword = new_keyword
-      #save
-      new_sentiment.save
     end
   end
 
