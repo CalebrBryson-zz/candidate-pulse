@@ -22,6 +22,7 @@ class CreateAuthors < ActiveRecord::Migration
 			t.integer :num_favorites
 			t.integer :num_retweets
 			t.string :text
+      t.datetime :post_date
       t.belongs_to :author, :foreign_key => 'author_id'
     end
 

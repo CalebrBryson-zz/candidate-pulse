@@ -1,10 +1,30 @@
 require './alchemyapi'
 
 
+
 class Tweet < ActiveRecord::Base
   belongs_to :author
   has_many :hashtags
   has_many :keywords
+  attr_accessor :usernames, :tags
+
+  include Twitter::Extractor
+
+  def usernames
+    @usernames = extract_mentioned_screen_names(self.text)
+  end
+
+  def tags
+    @tags = extract_hashtags(self.text)
+  end
+
+  def store_tags
+    self.tags.each do |tag|
+      new_tag = Hashtag.new(:htag => tag)
+      new_tag.tweet = self
+      new_tag.save
+    end
+  end
 
   def find_keywords
     alchemyapi = AlchemyAPI.new()
@@ -30,7 +50,7 @@ class Tweet < ActiveRecord::Base
         new_keyword.keyword = output["text"]
         new_keyword.tweet = self
         new_keyword.save
-      else #find the existing keyword to add sentiment to 
+      else #find the existing keyword to add sentiment to
         new_keyword = Keyword.where(:keyword => output["text"])
       end
 
@@ -44,6 +64,7 @@ class Tweet < ActiveRecord::Base
       new_sentiment.save
     end
   end
+
 
 
 

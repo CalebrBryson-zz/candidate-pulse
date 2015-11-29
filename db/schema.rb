@@ -64,10 +64,10 @@ ActiveRecord::Schema.define(version: 20151129005544) do
   create_table "tweets", force: :cascade do |t|
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
-    t.string   "htags"
     t.integer  "num_favorites"
     t.integer  "num_retweets"
     t.string   "text"
+    t.datetime "post_date"
     t.integer  "author_id"
   end
 
