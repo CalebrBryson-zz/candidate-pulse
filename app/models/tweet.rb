@@ -63,19 +63,320 @@ class Tweet < ActiveRecord::Base
       config.consumer_secret = Rails.application.secrets.consumer_secret
     end
 
-    client.search("from:realDonaldTrump", result_type: "popular").take(5000).each do |tweet|
+    client.search("from:realDonaldTrump", result_type: "popular").take(20).each do |tweet|
       new_tweet = Tweet.new
       new_tweet.text = tweet.text
       new_tweet.num_favorites = tweet.favorite_count
       new_tweet.num_retweets = tweet.retweet_count
       new_tweet.save
-      trump = Author.where(:name => '@realDonaldTrump').first
-      trump.tweets << new_tweet
+      author = Author.where(:name => '@realDonaldTrump').first
+      author.tweets << new_tweet
       new_tweet.store_tags
-      new_tweet.store_keywords
+    end
+  end
+
+  def hillary_tweets
+    client = Twitter::REST::Client.new do |config|
+      config.consumer_key    = Rails.application.secrets.consumer_key
+      config.consumer_secret = Rails.application.secrets.consumer_secret
     end
 
+    client.search("from:HillaryClinton", result_type: "popular").take(20).each do |tweet|
+      new_tweet = Tweet.new
+      new_tweet.text = tweet.text
+      new_tweet.num_favorites = tweet.favorite_count
+      new_tweet.num_retweets = tweet.retweet_count
+      new_tweet.save
+      author = Author.where(:name => '@HillaryClinton').first
+      author.tweets << new_tweet
+      new_tweet.store_tags
+    end
   end
+  def ben_tweets
+    client = Twitter::REST::Client.new do |config|
+      config.consumer_key    = Rails.application.secrets.consumer_key
+      config.consumer_secret = Rails.application.secrets.consumer_secret
+    end
+
+    client.search("from:RealBenCarson", result_type: "popular").take(20).each do |tweet|
+      new_tweet = Tweet.new
+      new_tweet.text = tweet.text
+      new_tweet.num_favorites = tweet.favorite_count
+      new_tweet.num_retweets = tweet.retweet_count
+      new_tweet.save
+      author = Author.where(:name => '@RealBenCarson').first
+      author.tweets << new_tweet
+      new_tweet.store_tags
+    end
+  end
+  def rand_tweets
+    client = Twitter::REST::Client.new do |config|
+      config.consumer_key    = Rails.application.secrets.consumer_key
+      config.consumer_secret = Rails.application.secrets.consumer_secret
+    end
+
+    client.search("from:RandPaul", result_type: "popular").take(20).each do |tweet|
+      new_tweet = Tweet.new
+      new_tweet.text = tweet.text
+      new_tweet.num_favorites = tweet.favorite_count
+      new_tweet.num_retweets = tweet.retweet_count
+      new_tweet.save
+      author = Author.where(:name => '@RandPaul').first
+      author.tweets << new_tweet
+      new_tweet.store_tags
+    end
+  end
+  def omalley_tweets
+    client = Twitter::REST::Client.new do |config|
+      config.consumer_key    = Rails.application.secrets.consumer_key
+      config.consumer_secret = Rails.application.secrets.consumer_secret
+    end
+
+    client.search("from:MartinOMalley", result_type: "popular").take(20).each do |tweet|
+      new_tweet = Tweet.new
+      new_tweet.text = tweet.text
+      new_tweet.num_favorites = tweet.favorite_count
+      new_tweet.num_retweets = tweet.retweet_count
+      new_tweet.save
+      author = Author.where(:name => '@MartinOMalley').first
+      author.tweets << new_tweet
+      new_tweet.store_tags
+    end
+  end
+  def bernie_tweets
+    client = Twitter::REST::Client.new do |config|
+      config.consumer_key    = Rails.application.secrets.consumer_key
+      config.consumer_secret = Rails.application.secrets.consumer_secret
+    end
+
+    client.search("from:BernieSanders", result_type: "popular").take(20).each do |tweet|
+      new_tweet = Tweet.new
+      new_tweet.text = tweet.text
+      new_tweet.num_favorites = tweet.favorite_count
+      new_tweet.num_retweets = tweet.retweet_count
+      new_tweet.save
+      author = Author.where(:name => '@BernieSanders').first
+      author.tweets << new_tweet
+      new_tweet.store_tags
+    end
+  end
+  def jeb_tweets
+    client = Twitter::REST::Client.new do |config|
+      config.consumer_key    = Rails.application.secrets.consumer_key
+      config.consumer_secret = Rails.application.secrets.consumer_secret
+    end
+
+    client.search("from:JebBush", result_type: "popular").take(20).each do |tweet|
+      new_tweet = Tweet.new
+      new_tweet.text = tweet.text
+      new_tweet.num_favorites = tweet.favorite_count
+      new_tweet.num_retweets = tweet.retweet_count
+      new_tweet.save
+      author = Author.where(:name => '@JebBush').first
+      author.tweets << new_tweet
+      new_tweet.store_tags
+    end
+  end
+  def christie_tweets
+    client = Twitter::REST::Client.new do |config|
+      config.consumer_key    = Rails.application.secrets.consumer_key
+      config.consumer_secret = Rails.application.secrets.consumer_secret
+    end
+
+    client.search("from:ChrisChristie", result_type: "popular").take(20).each do |tweet|
+      new_tweet = Tweet.new
+      new_tweet.text = tweet.text
+      new_tweet.num_favorites = tweet.favorite_count
+      new_tweet.num_retweets = tweet.retweet_count
+      new_tweet.save
+      author = Author.where(:name => '@ChrisChristie').first
+      author.tweets << new_tweet
+      new_tweet.store_tags
+    end
+  end
+  def cruz_tweets
+    client = Twitter::REST::Client.new do |config|
+      config.consumer_key    = Rails.application.secrets.consumer_key
+      config.consumer_secret = Rails.application.secrets.consumer_secret
+    end
+
+    client.search("from:tedcruz", result_type: "popular").take(20).each do |tweet|
+      new_tweet = Tweet.new
+      new_tweet.text = tweet.text
+      new_tweet.num_favorites = tweet.favorite_count
+      new_tweet.num_retweets = tweet.retweet_count
+      new_tweet.save
+      author = Author.where(:name => '@tedcruz').first
+      author.tweets << new_tweet
+      new_tweet.store_tags
+    end
+  end
+  def fiorina_tweets
+    client = Twitter::REST::Client.new do |config|
+      config.consumer_key    = Rails.application.secrets.consumer_key
+      config.consumer_secret = Rails.application.secrets.consumer_secret
+    end
+
+    client.search("from:CarlyFiorina", result_type: "popular").take(20).each do |tweet|
+      new_tweet = Tweet.new
+      new_tweet.text = tweet.text
+      new_tweet.num_favorites = tweet.favorite_count
+      new_tweet.num_retweets = tweet.retweet_count
+      new_tweet.save
+      author = Author.where(:name => '@CarlyFiorina').first
+      author.tweets << new_tweet
+      new_tweet.store_tags
+    end
+  end
+  def gilmore_tweets
+    client = Twitter::REST::Client.new do |config|
+      config.consumer_key    = Rails.application.secrets.consumer_key
+      config.consumer_secret = Rails.application.secrets.consumer_secret
+    end
+
+    client.search("from:gov_gilmore", result_type: "popular").take(20).each do |tweet|
+      new_tweet = Tweet.new
+      new_tweet.text = tweet.text
+      new_tweet.num_favorites = tweet.favorite_count
+      new_tweet.num_retweets = tweet.retweet_count
+      new_tweet.save
+      author = Author.where(:name => '@gov_gilmore').first
+      author.tweets << new_tweet
+      new_tweet.store_tags
+    end
+  end
+
+  def graham_tweets
+    client = Twitter::REST::Client.new do |config|
+      config.consumer_key    = Rails.application.secrets.consumer_key
+      config.consumer_secret = Rails.application.secrets.consumer_secret
+    end
+
+    client.search("from:LindseyGrahamSC", result_type: "popular").take(20).each do |tweet|
+      new_tweet = Tweet.new
+      new_tweet.text = tweet.text
+      new_tweet.num_favorites = tweet.favorite_count
+      new_tweet.num_retweets = tweet.retweet_count
+      new_tweet.save
+      author = Author.where(:name => '@LindseyGrahamSC').first
+      author.tweets << new_tweet
+      new_tweet.store_tags
+    end
+  end
+
+  def huckabee_tweets
+    client = Twitter::REST::Client.new do |config|
+      config.consumer_key    = Rails.application.secrets.consumer_key
+      config.consumer_secret = Rails.application.secrets.consumer_secret
+    end
+
+    client.search("from:GovMikeHuckabee", result_type: "popular").take(20).each do |tweet|
+      new_tweet = Tweet.new
+      new_tweet.text = tweet.text
+      new_tweet.num_favorites = tweet.favorite_count
+      new_tweet.num_retweets = tweet.retweet_count
+      new_tweet.save
+      author = Author.where(:name => '@GovMikeHuckabee').first
+      author.tweets << new_tweet
+      new_tweet.store_tags
+    end
+  end
+
+  def kasich_tweets
+    client = Twitter::REST::Client.new do |config|
+      config.consumer_key    = Rails.application.secrets.consumer_key
+      config.consumer_secret = Rails.application.secrets.consumer_secret
+    end
+
+    client.search("from:JohnKasich", result_type: "popular").take(20).each do |tweet|
+      new_tweet = Tweet.new
+      new_tweet.text = tweet.text
+      new_tweet.num_favorites = tweet.favorite_count
+      new_tweet.num_retweets = tweet.retweet_count
+      new_tweet.save
+      author = Author.where(:name => '@JohnKasich').first
+      author.tweets << new_tweet
+      new_tweet.store_tags
+    end
+  end
+
+  def pataki_tweets
+    client = Twitter::REST::Client.new do |config|
+      config.consumer_key    = Rails.application.secrets.consumer_key
+      config.consumer_secret = Rails.application.secrets.consumer_secret
+    end
+
+    client.search("from:GovernorPataki", result_type: "popular").take(20).each do |tweet|
+      new_tweet = Tweet.new
+      new_tweet.text = tweet.text
+      new_tweet.num_favorites = tweet.favorite_count
+      new_tweet.num_retweets = tweet.retweet_count
+      new_tweet.save
+      author = Author.where(:name => '@GovernorPataki').first
+      author.tweets << new_tweet
+      new_tweet.store_tags
+    end
+  end
+
+  def rubio_tweets
+    client = Twitter::REST::Client.new do |config|
+      config.consumer_key    = Rails.application.secrets.consumer_key
+      config.consumer_secret = Rails.application.secrets.consumer_secret
+    end
+
+    client.search("from:marcorubio", result_type: "popular").take(20).each do |tweet|
+      new_tweet = Tweet.new
+      new_tweet.text = tweet.text
+      new_tweet.num_favorites = tweet.favorite_count
+      new_tweet.num_retweets = tweet.retweet_count
+      new_tweet.save
+      author = Author.where(:name => '@marcorubio').first
+      author.tweets << new_tweet
+      new_tweet.store_tags
+    end
+  end
+
+  def santorum_tweets
+    client = Twitter::REST::Client.new do |config|
+      config.consumer_key    = Rails.application.secrets.consumer_key
+      config.consumer_secret = Rails.application.secrets.consumer_secret
+    end
+
+    client.search("from:RickSantorum", result_type: "popular").take(20).each do |tweet|
+      new_tweet = Tweet.new
+      new_tweet.text = tweet.text
+      new_tweet.num_favorites = tweet.favorite_count
+      new_tweet.num_retweets = tweet.retweet_count
+      new_tweet.save
+      author = Author.where(:name => '@RickSantorum').first
+      author.tweets << new_tweet
+      new_tweet.store_tags
+    end
+  end
+
+  def stein_tweets
+    client = Twitter::REST::Client.new do |config|
+      config.consumer_key    = Rails.application.secrets.consumer_key
+      config.consumer_secret = Rails.application.secrets.consumer_secret
+    end
+
+    client.search("from:DrJillStein", result_type: "popular").take(20).each do |tweet|
+      new_tweet = Tweet.new
+      new_tweet.text = tweet.text
+      new_tweet.num_favorites = tweet.favorite_count
+      new_tweet.num_retweets = tweet.retweet_count
+      new_tweet.save
+      author = Author.where(:name => '@DrJillStein').first
+      author.tweets << new_tweet
+      new_tweet.store_tags
+    end
+  end
+
+
+
+
+
+
 
 
 
