@@ -59,3 +59,30 @@
 			</ol>
 	</div>
 </div>
+
+<<div class="row">
+	 <div class="col-md-6">
+	 	<h3>Top Five Favorited Candidates</h3>
+		<ol>
+		<% @mostpopular.each do |candidate| %>
+
+			<li><h4> <%= candidate.name %> </h4>
+				 <%= candidate.popularity %>
+			</li>
+
+		<% end %>
+		</ol>
+	</div>
+	<div class="col-md-6">
+		<h3>Top Five Least Favorited Candidates</h3>
+			<ol>
+			<% @leastpopular.each do |candidate| %>
+
+				<li><h4> <%= candidate.name %> </h4>
+					 <%= candidate.popularity%>
+				</li>
+
+			<% end %>
+			</ol>
+	</div>
+</div>

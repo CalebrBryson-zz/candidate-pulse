@@ -7,6 +7,9 @@ class CandidatesController < ApplicationController
 			@mostpostitive = Candidate.all.sort_by &:positivity
 			@leastpositive = @mostpostitive.first(5)
 			@mostpostitive = @mostpostitive.reverse.first(5)
+			@mostpopular = Candidate.all.sort_by &:popularity
+			@leastpopular = @mostpopular.first(5)
+			@mostpopular = @mostpopular.reverse.first(5)
 		end
 		def show
 			@candidate = Candidate.find(params[:id])
@@ -32,8 +35,5 @@ class CandidatesController < ApplicationController
 			@keywords = @keywords.reverse.first(10)
 		end
 
-		def most_used_keywords
-			@candidate = Candidate.find(params[:candidate])
-		end
 
 end

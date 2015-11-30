@@ -1,7 +1,7 @@
 class Candidate < ActiveRecord::Base
   has_one :author
   has_many :tweets, through: :author
-  attr_accessor :positivity
+  attr_accessor :positivity, :popularity
 
   def positivity
     score = 0
@@ -15,14 +15,24 @@ class Candidate < ActiveRecord::Base
 
   def keywords
     tweets = self.tweets
-      keywords = []
-      tweets.each do |tweet|
-        tweet.keywords.each do |keyword|
-          if keyword.score != nil
-            keywords << keyword
-          end
+    keywords = []
+    tweets.each do |tweet|
+      tweet.keywords.each do |keyword|
+        if keyword.score != nil
+          keywords << keyword
         end
       end
-      return keywords
+    end
+    return keywords
+  end
+
+    def popularity
+      score = 0
+      self.tweets.each do |tweet|
+        if tweet.num_favorites != nil
+          score = score + tweet.num_favorites
+        end
+      end
+      @positivity = score
     end
 end
