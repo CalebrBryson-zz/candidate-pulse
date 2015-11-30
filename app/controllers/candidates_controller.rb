@@ -7,5 +7,24 @@ class CandidatesController < ApplicationController
 		end
 		def show
 			@candidate = Candidate.find(params[:id])
+			@tweets = @candidate.tweets.limit(5)
 		end
+
+		def favorite_tweets
+			@candidate = Candidate.find(params[:candidate])
+			@tweets = @candidate.tweets.limit(5)
+	  end
+
+		def negative_keywords
+			@candidate = Candidate.find(params[:candidate])
+		end
+
+		def positive_keywords
+			@candidate = Candidate.find(params[:candidate])
+		end
+
+		def most_used_keywords
+			@candidate = Candidate.find(params[:candidate])
+		end
+
 end

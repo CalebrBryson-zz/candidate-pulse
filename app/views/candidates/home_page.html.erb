@@ -1,6 +1,6 @@
 <div class="container">
 	<h1> Candidate Pulse </h1>
-	
+
 	<div class="jumbotron">
 		<%= pie_chart Candidate.group(:party).count %>
 	</div>
@@ -22,7 +22,9 @@
 				<% @republicans.each do |candidate| %>
 					<h4>
 						<%= link_to candidate.name, candidate_path(candidate) %>
+						<%= candidate.author.name %>
 					</h4>
+
 				<% end %>
 			</center>
 		</div>
@@ -30,7 +32,10 @@
 	  	<center>
 				<h3> Democrats </h3>
 				<% @democrats.each do |candidate| %>
-				<h4> <%= candidate.name %> </h4>
+				<h4>
+					<%= link_to candidate.name, candidate_path(candidate) %>
+					<%= candidate.author.name %>
+				</h4>
 				<% end %>
 			</center>
 	  </div>
@@ -38,7 +43,10 @@
 			<center>
 				<h3> Independent </h3>
 				<% @independents.each do |candidate| %>
-				<h4> <%= candidate.name %> </h4>
+				<h4>
+					<%= link_to candidate.name, candidate_path(candidate) %>
+					<%= candidate.author.name %>
+				</h4>
 				<% end %>
 			</center>
 		</div>

@@ -1,0 +1,11 @@
+<div class="container">
+	<h1>Candidate Name</h1>
+	<h2><%= @candidate.name %> </h2>
+	<ul>
+		<% @tweets.each do |tweet| %>
+				<li>
+							<%= tweet.text %>
+				</li>
+		<% end %>
+	</ul>
+</div>
