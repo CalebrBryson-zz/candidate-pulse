@@ -12,8 +12,9 @@ class CandidatesController < ApplicationController
 
 		def favorite_tweets
 			@candidate = Candidate.find(params[:candidate])
-			@tweets = @candidate.tweets.sort_by { |num_favorites| }
-			@tweets = @tweets.first(10)
+			@tweets = @candidate.tweets.sort_by &:num_favorites
+			@tweets = @tweets.reverse.first(10)
+
 	  	end
 
 		def negative_keywords

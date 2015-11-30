@@ -5,6 +5,7 @@
 		<% @tweets.each do |tweet| %>
 				<li>
 							<%= tweet.text %>
+							<%= tweet.num_favorites %>
 				</li>
 		<% end %>
 	</ul>
