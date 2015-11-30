@@ -57,14 +57,22 @@ class Tweet < ActiveRecord::Base
     end
   end
 
-  def new_tweets
+  def trump_tweets
     client = Twitter::REST::Client.new do |config|
       config.consumer_key    = Rails.application.secrets.consumer_key
       config.consumer_secret = Rails.application.secrets.consumer_secret
     end
 
-    client.search("to:justinbieber marry me", result_type: "recent").take(3).each do |tweet|
-      puts tweet.text
+    client.search("from:realDonaldTrump", result_type: "popular").take(5000).each do |tweet|
+      new_tweet = Tweet.new
+      new_tweet.text = tweet.text
+      new_tweet.num_favorites = tweet.favorite_count
+      new_tweet.num_retweets = tweet.retweet_count
+      new_tweet.save
+      trump = Author.where(:name => '@realDonaldTrump').first
+      trump.tweets << new_tweet
+      new_tweet.store_tags
+      new_tweet.store_keywords
     end
 
   end
