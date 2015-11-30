@@ -6,7 +6,7 @@ class Tweet < ActiveRecord::Base
   belongs_to :author
   has_many :hashtags
   has_many :keywords
-  attr_accessor :usernames, :tags
+  attr_accessor :usernames, :tags, :keyword_score
 
   include Twitter::Extractor
 
@@ -18,6 +18,16 @@ class Tweet < ActiveRecord::Base
     @tags = extract_hashtags(self.text)
   end
 
+  def keyword_score
+    score = 0
+    self.keywords.each do |keyword|
+      if keyword.score != nil
+        score = score + keyword.score
+      end
+    end
+    @keyword_score = score
+  end
+
   def store_tags
     self.tags.each do |tag|
       new_tag = Hashtag.new(:htag => tag)
@@ -25,6 +35,7 @@ class Tweet < ActiveRecord::Base
       new_tag.save
     end
   end
+
 
   def find_keywords
     alchemyapi = AlchemyAPI.new()
