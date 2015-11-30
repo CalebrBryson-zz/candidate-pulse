@@ -1,11 +1,9 @@
 <div class="container">
 	<h1> Candidate Pulse </h1>
-	<!--
-	<% @candidates.each do |candidate| %>
-		<h3> <%= candidate.name %> </h3>
-	<% end %>
-	-->
-
+	
+	<div class="jumbotron">
+		<%= pie_chart Candidate.group(:party).count %>
+	</div>
 	<div class="row">
 		<center>
 				<div class="input-group">
@@ -44,8 +42,5 @@
 				<% end %>
 			</center>
 		</div>
-	</div>
-	<div class="jumbotron">
-		<%= pie_chart Candidate.group(:party).count %>
 	</div>
 </div>

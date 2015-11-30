@@ -3,9 +3,9 @@
 	<h2><%= @candidate.name %> </h2>
 	<div class="row">
 	 	<div class="col-md-4">
-				<ul>
-					<li>Party: <%= @candidate.party %> </li>
-					<li>Approval Rating:</li>
+				<ul>Show:
+					<li>Tweets</li>
+					<li>Keywords</li>
 				</ul>
 				<h3>
 					<% @candidate.tweets.each do |tweet| %>
@@ -13,6 +13,5 @@
 					<% end %>
 				</h3>
 		</div>
-
 	</div>
 </div>
