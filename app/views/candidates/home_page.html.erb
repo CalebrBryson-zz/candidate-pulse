@@ -33,14 +33,29 @@
 
 </div>
 
-<div class="jumbotron">
-	<ol>
-	<% @mostpostitive.each do |candidate| %>
+<div class="row">
+	 <div class="col-md-6">
+	 	<h3>Top Five Most Positive Candidates</h3>
+		<ol>
+		<% @mostpostitive.each do |candidate| %>
 
-		<li><h4> <%= candidate.name %> </h4>
-			 <%= candidate.positivity %>
-		</li>
+			<li><h4> <%= candidate.name %> </h4>
+				 <%= candidate.positivity %>
+			</li>
 
-	<% end %>
-	</ol>
+		<% end %>
+		</ol>
+	</div>
+	<div class="col-md-6">
+		<h3>Top Five Most Negative Candidates</h3>
+			<ol>
+			<% @leastpositive.each do |candidate| %>
+
+				<li><h4> <%= candidate.name %> </h4>
+					 <%= candidate.positivity %>
+				</li>
+
+			<% end %>
+			</ol>
+	</div>
 </div>

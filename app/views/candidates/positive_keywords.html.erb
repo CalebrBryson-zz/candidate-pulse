@@ -1,12 +1,12 @@
 <div class="container">
 	<h1><%= @candidate.name %> </h1>
 	<h2>Top Ten Most Positive Keywords</h2>
-	<ul>
+	<ol>
 		<% @keywords.each do |keyword| %>
 				<li>
 							<%= keyword.keyword %>
 							<%= keyword.score %>
 				</li>
 		<% end %>
-	</ul>
+	</ol>
 </div>
