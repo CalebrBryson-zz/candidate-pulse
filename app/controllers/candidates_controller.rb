@@ -4,6 +4,9 @@ class CandidatesController < ApplicationController
 			@republicans = Candidate.where(:party => "Republican")
 			@democrats = Candidate.where(:party => "Democrat")
 			@independents = Candidate.where(:party => "Independent")
+			@mostpostitive = Candidate.all.sort_by &:positivity
+			@leastpositive = @mostpostitive.first(5)
+			@mostpostitive = @mostpostitive.reverse.first(5)
 		end
 		def show
 			@candidate = Candidate.find(params[:id])

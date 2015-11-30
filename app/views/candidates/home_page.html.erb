@@ -29,5 +29,18 @@
 				<% end %>
 			</center>
 	  </div>
-	</div>
+</div>
+
+</div>
+
+<div class="jumbotron">
+	<ol>
+	<% @mostpostitive.each do |candidate| %>
+
+		<li><h4> <%= candidate.name %> </h4>
+			 <%= candidate.positivity %>
+		</li>
+
+	<% end %>
+	</ol>
 </div>
