@@ -40,7 +40,6 @@ class Tweet < ActiveRecord::Base
 
   def store_keywords
     #IF the keywords have not been stored yet
-    if Keyword.where(:tweet_id => self.id).empty?
       alchemyapi = AlchemyAPI.new()
       keywords = alchemyapi.keywords("text", text, options = {"sentiment" => 1})
       keywords["keywords"].each do |output|
@@ -53,7 +52,6 @@ class Tweet < ActiveRecord::Base
         new_keyword.sentiment = output["sentiment"]["type"]
         new_keyword.tweet = self
         new_keyword.save
-      end
     end
   end
 
