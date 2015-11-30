@@ -12,4 +12,17 @@ class Candidate < ActiveRecord::Base
     end
     @positivity = score
   end
+
+  def keywords
+    tweets = self.tweets
+      keywords = []
+      tweets.each do |tweet|
+        tweet.keywords.each do |keyword|
+          if keyword.score != nil
+            keywords << keyword
+          end
+        end
+      end
+      return keywords
+    end
 end

@@ -19,10 +19,14 @@ class CandidatesController < ApplicationController
 
 		def negative_keywords
 			@candidate = Candidate.find(params[:candidate])
+			@keywords = @candidate.keywords.sort_by &:score
+			@keywords = @keywords.first(10)
 		end
 
 		def positive_keywords
 			@candidate = Candidate.find(params[:candidate])
+			@keywords = @candidate.keywords.sort_by &:score
+			@keywords = @keywords.reverse.first(10)
 		end
 
 		def most_used_keywords

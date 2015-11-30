@@ -4,19 +4,9 @@
 	<div class="jumbotron">
 		<%= pie_chart Candidate.group(:party).count %>
 	</div>
-	<div class="row">
-		<center>
-				<div class="input-group">
-			      	<input type="text" class="form-control" placeholder="Enter a candidate name.">
-			      	<span class="input-group-btn">
-			        	<button class="btn btn-default" type="button">Search</button>
-			      	</span>
-			    </div><!-- /input-group -->
-		</center>
-	</div>
 
 	<div class="row">
-	 	<div class="col-md-4">
+	 	<div class="col-md-6">
 			<center>
 				<h3> Republican </h3>
 				<% @republicans.each do |candidate| %>
@@ -28,7 +18,7 @@
 				<% end %>
 			</center>
 		</div>
-	  <div class="col-md-4">
+	  <div class="col-md-6">
 	  	<center>
 				<h3> Democrats </h3>
 				<% @democrats.each do |candidate| %>
@@ -39,16 +29,5 @@
 				<% end %>
 			</center>
 	  </div>
-	 	<div class="col-md-4">
-			<center>
-				<h3> Independent </h3>
-				<% @independents.each do |candidate| %>
-				<h4>
-					<%= link_to candidate.name, candidate_path(candidate) %>
-					<%= candidate.author.name %>
-				</h4>
-				<% end %>
-			</center>
-		</div>
 	</div>
 </div>

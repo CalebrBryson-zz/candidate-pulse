@@ -1,0 +1,11 @@
+<div class="container">
+	<h1><%= @candidate.name %> </h1>
+	<h2>Top Ten Most Negative Keywords</h2>
+	<ul>
+		<% @keywords.each do |keyword| %>
+				<li>
+							<%= keyword.keyword %>
+				</li>
+		<% end %>
+	</ul>
+</div>

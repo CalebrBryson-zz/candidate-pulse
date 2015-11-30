@@ -1,11 +1,10 @@
 <div class="container">
-	<h1>Candidate Name</h1>
-	<h2><%= @candidate.name %> </h2>
+	<h1><%= @candidate.name %> </h1>
+	<h2>Top Ten Most Favorited Tweets</h2>
 	<ul>
 		<% @tweets.each do |tweet| %>
 				<li>
 							<%= tweet.text %>
-							<%= tweet.num_favorites %>
 				</li>
 		<% end %>
 	</ul>
