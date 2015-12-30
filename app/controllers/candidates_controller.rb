@@ -10,6 +10,10 @@ class CandidatesController < ApplicationController
 			@mostpopular = Candidate.all.sort_by &:popularity
 			@leastpopular = @mostpopular.first(5)
 			@mostpopular = @mostpopular.reverse.first(5)
+
+			@issuerank = Candidate.all.sort_by &:jordanrank
+			@issuerank = @issuerank.reverse.first(3)
+
 		end
 		def show
 			@candidate = Candidate.find(params[:id])
@@ -34,6 +38,8 @@ class CandidatesController < ApplicationController
 			@keywords = @candidate.keywords.sort_by &:score
 			@keywords = @keywords.reverse.first(10)
 		end
+
+
 
 
 end

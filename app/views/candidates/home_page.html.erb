@@ -60,7 +60,7 @@
 	</div>
 </div>
 
-<<div class="row">
+<div class="row">
 	 <div class="col-md-6">
 	 	<h3>Top Five Favorited Candidates</h3>
 		<ol>
@@ -85,4 +85,20 @@
 			<% end %>
 			</ol>
 	</div>
+</div>
+
+<div class="row">
+
+	 	<h3>Candidates most discussing the issues Jordan and Isis</h3>
+		<ol>
+		<% @issuerank.each do |candidate| %>
+
+			<li><h4> <%= candidate.name %> </h4>
+				Wrote <%= pluralize(candidate.ISISrank, 'tweet')%>
+			</li>
+
+		<% end %>
+		</ol>
+
+
 </div>

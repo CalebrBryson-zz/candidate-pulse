@@ -18,6 +18,9 @@ class Tweet < ActiveRecord::Base
     @tags = extract_hashtags(self.text)
   end
 
+  
+
+
   def keyword_score
     score = 0
     self.keywords.each do |keyword|
